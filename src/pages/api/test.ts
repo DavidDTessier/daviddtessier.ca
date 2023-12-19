@@ -11,7 +11,7 @@ export async function GET(){
     );
 }
 
-export const POST: APIRoute = async ({params, request}){
+export const POST: APIRoute = async ({params, request}) => {
     const body = await request.json();
     
     return new Response(
