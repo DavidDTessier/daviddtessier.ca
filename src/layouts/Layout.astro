@@ -1,0 +1,52 @@
+---
+import { ViewTransitions, slide } from "astro:transitions";
+import Header  from "../components/Header.astro";
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+}
+
+const { title, 
+	description = "Ramblings from a Cloud Security Architect", 
+image = "images/logo.png" } = Astro.props;
+
+const anim = {
+  old: {
+    name: 'fadeIn',
+    duration: '0.2s',
+    easing: 'linear',
+    fillMode: 'forwards',
+  },
+  new: {
+    name: 'fadeOut',
+    duration: '0.3s',
+    easing: 'linear',
+    fillMode: 'backwards',
+  }
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta property="og:image" content={image} />
+		<ViewTransitions  />
+		<title>{title}</title>
+	</head>
+	<body class=" min-h-screen">
+		<Header />
+		<slot />
+	</body>
+</html>
