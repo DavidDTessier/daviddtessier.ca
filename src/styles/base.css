@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+div {
+    display: block;
+}
+
+@layer components{
+  .navbarLi {
+    @apply  hover:text-hoverColor hover:font-bold cursor-pointer duration-300 text-xl
+  }
+  .navsidbarLi {
+    @apply  hover:text-hoverColor hover:font-bold cursor-pointer duration-300 text-lg
+  }
+  .navbarLiActive {
+    @apply underline uppercase font-bold text-amber-500 cursor-pointer duration-300 text-xl
+  }
+  .navsidbarLiActive {
+    @apply underline uppercase font-bold text-amber-500 cursor-pointer duration-300 text-lg
+  }
+}

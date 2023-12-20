@@ -1,6 +1,9 @@
 ---
 import { ViewTransitions, slide } from "astro:transitions";
 import Header  from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import '../styles/base.css'
+
 
 interface Props {
 	title: string;
@@ -8,9 +11,11 @@ interface Props {
 	image?: string;
 }
 
-const { title, 
+const { 
+	title, 
 	description = "Ramblings from a Cloud Security Architect", 
-image = "images/logo.png" } = Astro.props;
+	image = "images/logo.png" 
+} = Astro.props;
 
 const anim = {
   old: {
@@ -39,14 +44,16 @@ const myFade = {
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="104x70" />
 		<meta name="generator" content={Astro.generator} />
 		<meta property="og:image" content={image} />
 		<ViewTransitions  />
+	
 		<title>{title}</title>
 	</head>
-	<body class=" min-h-screen">
+	<body class="min-h-screen">
 		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>

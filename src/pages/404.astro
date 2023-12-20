@@ -1,0 +1,25 @@
+---
+import Main from "../components/Main.astro";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import H1 from "../components/H1.astro";
+---
+
+<Layout title="Not Found">
+    <Main>
+        <div class="w-full justify-center align-middle flex">
+	
+				<Image src="/images/shutterstock_479042983.jpg"  
+				width={600}
+				height={600 / 1.5}
+				alt="Not Found"
+				/>	
+		</div>
+        <div>
+            <p class="w-full justify-center align-middle flex font-mono text-slate-400">
+                Hi! 👋 Not sure what you are looking for, but it's not here.
+            </p>
+        </div>
+        
+    </Main>
+</Layout>

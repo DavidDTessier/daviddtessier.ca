@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+
+type Props = {
+    height: number;
+    width: number;
+    source_image?: string
+};
+
+const {width = 300, height = 300, source_image = "/images/Logo.svg"} = Astro.props
+---
+
+<a href="/" >
+    <Image 
+        src={source_image}
+        width={width}
+        height={height / 1.5}
+        alt = "Logo"
+        class="aspect-auto object-cover" />
+</a>
