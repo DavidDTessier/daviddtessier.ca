@@ -2,19 +2,32 @@
 import { getCollection } from "astro:content"
 import H1 from "../components/H1.astro";
 import Main from "../components/Main.astro";
-import Layout from "../layouts/Layout.astro";
+import Layout from "../layouts/BaseLayout.astro";
 import PostList from "../components/PostList.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const posts = await getCollection("posts");
 
 ---
 
-<Layout title="Blog | Rhythm Nation">
+<BaseLayout title="Blog | David Tessier">
 	<Main>
-		<H1 text="Rhythm Nation NBlog" />
-        {posts.map(post => (
-            <PostList posts={posts} />
-                
-        ))}
+        <div class="flex justify-center align-middle w-full">
+            <h1 class="font-mono font-thin text-4xl text-slate-800">BLOG</h1>
+    
+        </div>
+        <div class="mt-2 justify-center align-middle w-full">
+            <h2 class="font-mono text-3xl font-semibold text-slate-600">Articles for cloud developers and architects! </h1>
+        </div>
+        <div class="mt-3 align-middle w-full">
+            <span class="mt-2 font-mono text-slate-600">I try to document everything I learn or work on in order to provide information and help other learn. From application development to career tips.</span>
+        </div>
+		<div class="mt-6">
+            {posts.map(post => (
+                <PostList posts={posts} />
+                    
+            ))}
+        </div>
+        
 	</Main>
 </Layout>

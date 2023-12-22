@@ -13,10 +13,10 @@ const { post } = Astro.props
     <a href={`/blog/${post.slug}`}>
         <Image
             src={post.data.image}
-            width={600}
-            height={600 / 1.5}
+            width={1600}
+            height={800}
             alt={post.data.title}
-            class="rounded-2xl shadow-xl mb-4 aspect-square object-cover" />
+            class="rounded-2xl shadow-xl mb-4 object-cover" />
     </a>
     <a href={`/blog/${post.slug}`}
         class="text-4xl text-zinc-900 font-semibold inline-block"

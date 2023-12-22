@@ -6,14 +6,26 @@ import Socials from "./Socials.astro";
 
 <footer class="fixed bottom-0 border-t-2 border-slate-200 w-full  bg-slate-50">
     <hr />
-        <div class="font-mono font-thin flex justify-between items-center h-full w-full px-2 2xl:px-16">
-            Copyright &copy; 2023 David Tessier
-            <div class="hidden lg:flex">
-                Built on <a href="https://astro.build" class="font-bold cursor-pointer" target="_blank">Astro</a> | Styled with <a href="https://tailwindcss.com" class="font-bold cursor-pointer" target="_blank">Tailwind CSS</a> 
-            </div> 
-            <div class="hidden lg:flex">
-                <Socials icon_size={25} />
+        <div class="flex justify-between align-middle">
+            <div>
+                Copyright &copy; <span id="copyright"></span> &nbsp;| &nbsp;All rights reserved • David Tessier</span>
             </div>
+      
+        <div class="hidden lg:flex">
+            Built on <a href="https://astro.build" class="font-bold cursor-pointer" target="_blank">Astro</a> | Styled with <a href="https://tailwindcss.com" class="font-bold cursor-pointer" target="_blank">Tailwind CSS</a> 
+        </div> 
+        <div class="hidden lg:flex">
+            <Socials icon_size={25} />
         </div>
+    </div>
 </footer>
+
+<script>
+    const cp = document.querySelector("#copyright");
+    if (cp != null){
+        cp.textContent = new Date()
+            .getFullYear()
+            .toString(); 
+    }  
+</script>
 

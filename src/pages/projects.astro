@@ -1,0 +1,30 @@
+---
+import H1 from "../components/H1.astro";
+import Main from "../components/Main.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { Icon } from "astro-icon"
+
+---
+
+<BaseLayout title="Projects | David Tessier">
+    <Main>
+        <section>
+            <div class="m-4">
+                <H1 text="Personal & OSS Projects" />
+                <hr class="border-2 border-slate-400 w-28" />
+                <p class="my-3">
+                  The following are several personal or open source projects that David has worked on or contributed to over the course of his career.
+                </p>
+
+                <div class="justify-center content-center  w-full">
+                    <h2 class="text-4xl font-extrabold pt-10">Under Construction</h2>
+                    <div class=" w-full align-middle ">
+                        <Icon name="openmoji:construction" width="300"></Icon>
+                    </div>  
+                </div>
+            </div>
+        </section>
+       
+    </Main>
+</BaseLayout>

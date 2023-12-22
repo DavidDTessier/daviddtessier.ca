@@ -1,22 +1,89 @@
 ---
-import { Icon } from "astro-icon"
+// component imports
+import Logo from "./Logo.astro";
+import Link from "./Link.astro";
 
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+import {Icon} from "astro-icon";
+
+//data imports
+import navData from "../data/navData"
+import SideNav from "./SideNav.astro";
+import Socials from "./Socials.astro";
+
 ---
 
-<nav>
-    <ul class="hidden md:sm:flex gap-6 font-mono font-thin">
-        <li><a href="/" class={ currentPath === "" ? "navbarLiActive" : "navbarLi"}>Home</a></li>
-        <li><a href="/about" class={ currentPath === "about" ? "navbarLiActive" : "navbarLi"}>About</a></li>
-        <li><a href="/blog" class={currentPath=== "blog" ? "navbarLiActive" : "navbarLi"}>Blog</a></li>
-    </ul>
-    <button aria-label="menu" id="hamburger" 
-        aria-controls="mobileMenu" 
-        class="md:hidden lg:hidden sm:relative right-2 top-0">
-        <Icon 
-            class="inline lg:hidden h-10 w-10 hover:text-brand cursor-pointer" 
-            name="mdi:menu" />
-    </button>
+<nav class=" w-full bg-white dark:bg-black shadow-sm" >
+    <div class="flex justify-between align-middle w-full ms-2 me-2 ps-4 pe-4">
+            <Logo width={300} height={500} />
+            <ul class="hidden sm:md:flex gap-6 text-lg dark:text-white font-semibold text-black m-10">
+                {
+                    navData.map((item) => (
+                        <Link href={item.path} text={item.name} classes="navbarLi" isFilled={false} borderVisible={false} data-navLink />
+                        
+                    ))
+                }
+            </ul>
+            <button aria-label="menu" id="hamburger" 
+            aria-controls="mobileMenu" 
+            class="md:hidden lg:hidden sm:relative right-2 top-0">
+            <Icon 
+                class="inline lg:hidden h-10 w-10 hover:text-brand cursor-pointer" 
+                name="mdi:menu" />
+        </button>
+    </div>
+    <div id="mobileMenu"  class="fixed left-0 top-0 w-[50%] hidden h-screen bg-[#ecf0f3] p-11 ease-in duration-500">
+        <div class="flex w-full items-center justify-end rounded-lg">
+            <button id="close" 
+                class="absolute sm:relative block top-5 py-2 px-2 cursor-pointer">
+                <Icon 
+                    class="inline lg:hidden h-10 w-10 hover:text-brand cursor-pointer" 
+                    name="mdi:close" />
+            </button>
+         </div>
+         <div class="pt-48 gap-x-px-48">
+            <SideNav />
+           
+            <div class="pt-10">
+                <Socials icon_size={30} />
+            </div>
+            <div class="pt-10">
+                <Logo width={300} height={500} />
+            </div>  
+         </div>
+        </div>
+    </div>
 </nav>
 
+<script>import { slide } from "astro:transitions";
+
+    const navLinks = document.querySelectorAll("[data-navLink]");
+    const hamburger = document.getElementById("hamburger")
+    const close = document.getElementById("close")
+    
+    var path = window.location.pathname.slice(1)
+    const slash = path.lastIndexOf('/')
+    
+    if (slash != -1){
+        path = path.substring(0,slash)
+    }
+    
+    navLinks.forEach((link) => {
+       
+        if(link.getAttribute("href")?.slice(1) === path) {
+            link.setAttribute("class", "navbarLiActive");
+        }
+    })
+
+
+    hamburger?.addEventListener("click", ()=>{
+        const mobileMenu = document.getElementById("mobileMenu");
+        mobileMenu?.classList.remove("hidden")
+        document.body.dataset.menuOpen = "true";
+    })
+
+    close?.addEventListener("click", ()=>{
+        const mobileMenu = document.getElementById("mobileMenu");
+        mobileMenu?.classList.add("hidden")
+        delete document.body.dataset.menuOpen;
+    })
+</script>

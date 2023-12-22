@@ -1,31 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/BaseLayout.astro';
 import H1 from "../components/H1.astro";
 import Main from "../components/Main.astro";
 import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 export const prerender = true
 ---
 
-<Layout title="David Tessier">
+<BaseLayout>
 	<Main>
 		<div class="w-full pt-20 h-auto min-h-[100%] justify-center align-middle flex flex-row content-stretch">
 		
 			<div class="flex flex-wrap min-h-full max-w-full m-0">
 				<Image src="/images/me.jpeg"  
-				width={500}
-				height={500 / 1.5}
+				width={400}
+				height={400 / 1.5}
 				alt="Me"
-				class=" border-8 rounded-3xl border-gray-400"/>
+				class="border-8 rounded-3xl border-gray-400"/>
 				<div class="m-10 pt-20">
 					<H1 text="David Tessier" />
-					<p class="font-mono text-slate-400 mt-8">
+					<p class=" text-slate-400 mt-8">
 						Hi! 👋 I am a Cloud Security Architect specializing in all things Cloud! <br />
 						Welcome to my website which is intended to showcase my portfolio of work.
 					</p>
+					<div class="pt-10">
+						<button aria-label="About" class="p-2 font-mono font-bold hover:border-slate-600 hover:bg-slate-600 hover:text-white border-slate-400 bg-slate-100 rounded-md border-2">
+							<a href="/about">Get to know me more</a>
+						</button>
+					</div>
 				</div>
+				
 			</div>
 		</div>
 	</Main>
-</Layout>
+</BaseLayout>
 

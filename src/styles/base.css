@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,12 +8,28 @@ div {
     display: block;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+@layer base {
+  html {
+    @apply font-poppins
+  }
+}
+
 @layer components{
   .navbarLi {
-    @apply  hover:text-hoverColor hover:font-bold cursor-pointer duration-300 text-xl
+    @apply  hover:text-hoverColor hover:font-bold text-slate-600 cursor-pointer duration-300 text-xl
   }
   .navsidbarLi {
-    @apply  hover:text-hoverColor hover:font-bold cursor-pointer duration-300 text-lg
+    @apply  hover:text-hoverColor hover:font-bold  text-slate-600 cursor-pointer duration-300 text-lg
   }
   .navbarLiActive {
     @apply underline uppercase font-bold text-amber-500 cursor-pointer duration-300 text-xl

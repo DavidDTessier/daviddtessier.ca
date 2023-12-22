@@ -1,0 +1,64 @@
+---
+import Footer from "../components/Footer.astro";
+import '../styles/base.css'
+import BaseHead from "../components/BaseHead.astro";
+import { WEBSITE_TITLE, WEBSITE_DESCRIPTION } from "../config"
+import NavBar from "../components/Nav.astro";
+import Main from "../components/Main.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+}
+
+const { 
+	title, 
+	description = "Ramblings from a Cloud Security Architect", 
+	image = "images/logo.png" 
+} = Astro.props;
+
+const anim = {
+  old: {
+    name: 'fadeIn',
+    duration: '0.2s',
+    easing: 'linear',
+    fillMode: 'forwards',
+  },
+  new: {
+    name: 'fadeOut',
+    duration: '0.3s',
+    easing: 'linear',
+    fillMode: 'backwards',
+  }
+};
+
+const myFade = {
+  forwards: anim,
+  backwards: anim,
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead 
+			title={title || WEBSITE_TITLE } 
+			description={description || WEBSITE_DESCRIPTION}
+			image={image} />
+	</head>
+	<body>
+		<div class="flex flex-col min-h-screen overflow-x-hidden">
+			<header class="fixed top-0 w-full h-24 shadow-2xl shadow-slate-300 bg-slate-100">
+				<NavBar />
+			</header>
+			<div class="mx-auto grow w-full">
+				
+				<slot />
+	
+			</div>
+			<Footer />
+		</div>
+	
+	</body>
+</html>
