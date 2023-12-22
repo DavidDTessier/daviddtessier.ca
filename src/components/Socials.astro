@@ -1,5 +1,6 @@
 ---
 import Icon from "astro-icon"
+import socialData from "../data/socialData";
 
 type Props = {
     icon_size: number;
@@ -10,24 +11,11 @@ const {icon_size = 25} = Astro.props
 ---
 
 <ul class="relative flex gap-2">
-    <li>
-        <a href href="https://www.facebook.com/daviddtessier/" target="_blank">
-            <Icon name="fa-brands:facebook-square" size={icon_size} className="cursor-pointer" />
+    {
+        socialData.map((item) => (
+        <a href={item.url} target="_blank">
+            <Icon name={item.icon} size={icon_size} className="cursor-pointer" />
         </a>
-    </li>
-    <li>
-        <a href href="https://www.instagram.com/daviddtessier/" target="_blank">
-            <Icon name="fa-brands:instagram-square" size={icon_size} className="cursor-pointer" />
-        </a>
-    </li>
-    <li>
-        <a href href="https://github.com/DavidDTessier" target="_blank">
-            <Icon name="fa-brands:github-square" size={icon_size} className="cursor-pointer" />
-        </a>
-    </li>
-    <li>
-        <a href href="https://www.reddit.com/user/Cl0udS3c_2023" target="_blank">
-            <Icon name="fa-brands:reddit-square" size={icon_size} className="cursor-pointer" />
-        </a>
-    </li>
+        ))
+    }
 </ul>

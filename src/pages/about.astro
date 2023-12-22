@@ -6,6 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CredentialCard from "../components/CredentialCard.astro";
 import CredentialList from "../components/CredentialList.astro";
 import { getCollection } from "astro:content";
+import H1 from "../components/H1.astro";
 
 const credentials = await getCollection("credentials");
 
@@ -14,29 +15,28 @@ const credentials = await getCollection("credentials");
 
 <BaseLayout title="About | David Tessier">
     <Main>
-      <section>
-        <h1 class="font-mono font-bold uppercase">Summary</h1>
+      <section class="text-xl">
+        <div class="m-4">
+        <H1 text="About" />
         <hr class="border-2 border-slate-400 w-28" />
-        <p class="my-3 font-mono">
+      
+        <Image src="/images/me.jpeg"  
+				width={400}
+				height={400 / 1.5}
+				alt="Me"
+				class="border-8 rounded-full border-gray-400"/>
+        <p class="my-3">
           David is a <b>Senior Cloud Solutions Architect</b> with a focus on all things security related, from application security to network security. 
-          Currently he work 💼 within the pre-sales Solution Architecture team at <a href="https://sada.com" target="_blank"><b>SADA, An Insight company</b></a> which is a 🚀 Premier Google Cloud Partner, where he helps Clients on their Digital Cloud Transformation Journey to Google Cloud. 
+          Currently he work 💼 within the pre-sales Solution Architecture team at <a href="https://sada.com" class="font-bold hover:text-blue-800" target="_blank">SADA, An Insight company</a> which is a 🚀 Premier Google Cloud Partner, where he helps Clients on their Digital Cloud Transformation Journey to <a href="https://cloud.google.com/" class="font-bold hover:text-blue-800" target="_blank">Google Cloud</a>. 
         </p>
-        <p class="my-3 font-mono">
+        <p class="my-3">
             David 📝 blog's about everything and anything related to cloud, security, networking and application development. 
           
           </p>
-          <p class="my-3 font-mono">
+          <p class="my-3">
           David is an experienced application programmer 👨🏻‍💻 with a focus on backend systems and enjoys learning new technologies to keep his skills sharp.  
           </p>
-        
-      </section>
-      
-      <section>
-        <h1 class="font-mono font-bold uppercase">Projects</h1>
-        <hr class="border-2 border-slate-400 w-28" />
-        <p class="my-3">
-          The following are several personal or open source projects that David has worked on or contributed to over the course of his career.
-        </p>
+        </div>
       </section>
     </Main>
 </BaseLayout>

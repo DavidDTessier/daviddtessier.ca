@@ -1,11 +1,20 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
+
+//data imports
+import navData from "../data/navData"
+import Link from "./Link.astro";
 ---
 
-<ul>
-    <li class="m-5"><a href="/" class={ currentPath === "" ? "navsidbarLiActive" : "navsidbarLi"}>Home</a></li>
-    <li class="m-5"><a href="/about" class={ currentPath === "about" ? "navsidbarLiActive" : "navsidbarLi"}>About</a></li>
-    <li class="m-5"><a href="/blog" class={currentPath=== "blog" ? "navsidbarLiActive" : "navsidbarLi"}>Blog</a></li>
+<ul>   
+    {
+            navData.map((item) => (
+                <li class="m-5">
+                    <Link href={item.path} text={item.name} classes="navsidbarLi" isFilled={false} borderVisible={false} data-navLink />
+                </li>
+            ))
+        }
+    </ul>
 </ul>
 
