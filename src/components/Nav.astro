@@ -54,22 +54,18 @@ import Socials from "./Socials.astro";
     </div>
 </nav>
 
-<script>import { slide } from "astro:transitions";
+<script>import { PollingWatchKind } from "typescript";
+
 
     const navLinks = document.querySelectorAll("[data-navLink]");
     const hamburger = document.getElementById("hamburger")
     const close = document.getElementById("close")
     
     var path = window.location.pathname.slice(1)
-    const slash = path.lastIndexOf('/')
-    
-    if (slash != -1){
-        path = path.substring(0,slash)
-    }
-    
+
     navLinks.forEach((link) => {
-       
-        if(link.getAttribute("href")?.slice(1) === path) {
+       let linkPath = link.getAttribute("href")?.slice(1)
+        if(linkPath && path.includes(linkPath)) {
             link.setAttribute("class", "navbarLiActive");
         }
     })
