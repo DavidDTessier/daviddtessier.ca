@@ -2,13 +2,20 @@
 import { getCollection } from "astro:content"
 import H1 from "../../components/H1.astro";
 import Main from "../../components/Main.astro";
-import Layout from "../../layouts/BaseLayout.astro";
-import PostList from "../../components/PostList.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import Pagination from "../../components/Pagination.astro";
 
-const posts = await getCollection("posts");
+export async function  getStaticPaths({paginate}) {
+    const posts = await getCollection("posts");
+    posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 
-posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
+    return paginate(posts, {
+        pageSize: 2,
+    }) ;
+}
+
+const { page } = Astro.props
 
 ---
 
@@ -25,9 +32,20 @@ posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
         <div class="m-6 align-middle w-full">
             <span class="mt-2 font-mono text-slate-600">I try to document everything I learn or work on in order to provide information and help other learn. From application development to career tips.</span>
         </div>
-       
-		<div class="m-6">   
-                <PostList posts={posts} />
+        
+		<div class="m-6 align-middle w-full">   
+            <div class="grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1 mb-24">
+                {
+                    page.data.map((post) => 
+                        <PostCard post={post} />
+                    )
+                }
+                
+            </div>
+            <div class="flex flex-wrap gap-4">
+                <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+            </div>
+        
         </div>
     </section>
 	</Main>

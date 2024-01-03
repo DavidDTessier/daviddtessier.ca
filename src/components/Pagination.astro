@@ -1,0 +1,33 @@
+---
+import LinkButton from "./LinkButton.astro";
+
+const {prevUrl, nextUrl} = Astro.props
+---
+
+    {
+        prevUrl && (
+            <LinkButton 
+                label="Blog Page Previous"
+                display_text="Prev"
+                link={prevUrl}
+                icon={{
+                    name:"tabler:arrow-big-left-line",
+                    side:"left"
+                }}
+            />
+        )
+    }
+     {
+        nextUrl && (
+            <LinkButton 
+                label="Blog Page Next"
+                display_text="Next"
+                link={nextUrl}
+                icon={{
+                    name:"tabler:arrow-big-right-line",
+                    side:"right"
+                }}
+                
+            />
+        )
+    }
