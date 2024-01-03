@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 
 # Allow this job to clone this repo and create a page deployment
-
 permissions:
   contents: read
   pages: write
@@ -18,11 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Install, build, and update site
         uses: withastro/action@v1
-        with:
-          package-manager: yarn@latest
 
   deploy:
     needs: build
