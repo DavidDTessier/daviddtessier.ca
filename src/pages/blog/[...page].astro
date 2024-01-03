@@ -5,17 +5,26 @@ import Main from "../../components/Main.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostCard from "../../components/PostCard.astro";
 import Pagination from "../../components/Pagination.astro";
+import { SITE_PAGE_SIZE } from "../../config";
+import type { Page } from 'astro'
+import type { CollectionEntry } from "astro:content";
 
-export async function  getStaticPaths({paginate}) {
-    const posts = await getCollection("posts");
+
+
+export async function  getStaticPaths({ paginate } : any) {
+    let posts = await getCollection("posts");
     posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 
     return paginate(posts, {
-        pageSize: 2,
+        pageSize: SITE_PAGE_SIZE,
     }) ;
 }
 
-const { page } = Astro.props
+type Props = {
+    page : Page<CollectionEntry<'posts'>>
+}
+
+const { page  } = Astro.props
 
 ---
 
