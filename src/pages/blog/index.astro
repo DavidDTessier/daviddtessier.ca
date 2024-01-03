@@ -8,6 +8,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const posts = await getCollection("posts");
 
+posts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
+
 ---
 
 <BaseLayout title="Blog | David Tessier">
@@ -24,11 +26,8 @@ const posts = await getCollection("posts");
             <span class="mt-2 font-mono text-slate-600">I try to document everything I learn or work on in order to provide information and help other learn. From application development to career tips.</span>
         </div>
        
-		<div class="m-6">
-            {posts.map(post => (
+		<div class="m-6">   
                 <PostList posts={posts} />
-                    
-            ))}
         </div>
     </section>
 	</Main>

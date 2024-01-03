@@ -1,0 +1,13 @@
+---
+type Props = {
+    link: string,
+    display_text: string,
+    target?: string,
+}
+
+const { link, display_text, target = "_self"} = Astro.props
+---
+
+<button aria-label="Contact Me" class="p-2 font-mono font-bold hover:border-slate-600 hover:bg-slate-600 hover:text-white border-slate-400 bg-white rounded-md border-2">
+    <a href={link} target={target}>{display_text}</a>
+</button>

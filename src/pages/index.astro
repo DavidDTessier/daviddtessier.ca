@@ -4,6 +4,7 @@ import H1 from "../components/H1.astro";
 import Main from "../components/Main.astro";
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LinkButton from '../components/LinkButton.astro';
 
 export const prerender = true
 ---
@@ -26,14 +27,13 @@ export const prerender = true
 					</p>
 					<div class="flex flex-wrap gap-4 ">
 						<div class="pt-8">
-							<button aria-label="About" class="p-2 font-mono font-bold hover:border-slate-600 hover:bg-slate-600 hover:text-white border-slate-400 bg-white rounded-md border-2">
-								<a href="/about">Learn more</a>
-							</button>
+							<LinkButton link="/about" display_text="Learn more" />
 						</div>
 						<div class="pt-8">
-							<button aria-label="Contact Me" class="p-2 font-mono font-bold hover:border-slate-600 hover:bg-slate-600 hover:text-white border-slate-400 bg-white rounded-md border-2">
-								<a href="mailto:david@daviddtessier.ca">Contact Me</a>
-							</button>
+							<LinkButton link="mailto:david@daviddtessier.ca" display_text="Contact Me" />
+						</div>
+						<div class="pt-8">
+							<LinkButton link="https://calendly.com/daviddtessier/15-min-on-on-one" display_text="Book 15 Mins" target="_blank" />
 						</div>
 					</div>
 					
