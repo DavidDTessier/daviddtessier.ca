@@ -26,13 +26,13 @@ h6 {
 
 @layer components{
   .navbarLi {
-    @apply  hover:text-hoverColor hover:font-bold text-slate-600 cursor-pointer duration-300 text-xl
+    @apply  hover:text-hoverColor hover:font-bold text-slate-600 cursor-pointer duration-300 text-lg
   }
   .navsidbarLi {
     @apply  hover:text-hoverColor hover:font-bold  text-slate-600 cursor-pointer duration-300 text-lg
   }
   .navbarLiActive {
-    @apply underline uppercase font-bold text-amber-500 cursor-pointer duration-300 text-xl
+    @apply underline uppercase font-bold text-amber-500 cursor-pointer duration-300 text-lg
   }
   .navsidbarLiActive {
     @apply underline uppercase font-bold text-amber-500 cursor-pointer duration-300 text-lg

@@ -10,7 +10,7 @@ import Link from "./Link.astro";
 <ul>   
     {
             navData.map((item) => (
-                <li class="m-5">
+                <li class="m-2">
                     <Link href={item.path} text={item.name} classes="navsidbarLi" isFilled={false} borderVisible={false} data-navLink />
                 </li>
             ))
