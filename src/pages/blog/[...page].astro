@@ -31,18 +31,18 @@ const { page  } = Astro.props
 <BaseLayout title="Blog | David Tessier">
 	<Main>
         <section>
-            <div class="m-4">
+            <div class="sm:m-6">
                 <H1 text="Technical Ramblings" />
-                <hr class="border-2 border-slate-400 w-28" />
+                <hr class="border-2 border-slate-400 w-28 mb-4" />
             </div>
-        <div class="m-6 justify-center align-middle w-full">
-            <h2 class="font-mono text-3xl font-semibold text-slate-600">Articles for cloud developers and architects! </h1>
+        <div class="sm:m-6 justify-center align-middle w-full">
+            <h2 class="font-mono text-xl sm:text-3xl font-semibold text-slate-600">Articles for cloud developers and architects! </h1>
         </div>
-        <div class="m-6 align-middle w-full">
-            <span class="mt-2 font-mono text-slate-600">I try to document everything I learn or work on in order to provide information and help other learn. From application development to career tips.</span>
+        <div class="sm:m-6 align-middle w-full pt-3">
+            <span class="font-mono text-slate-600">I try to document everything I learn or work on in order to provide information and help other learn. From application development to career tips.</span>
         </div>
         
-		<div class="m-6 align-middle w-full">   
+		<div class="sm:m-4 align-middle w-full">   
             <div class="grid grid-cols-2 gap-x-16 gap-y-14 max-md:grid-cols-1 mb-24">
                 {
                     page.data.map((post) => 
