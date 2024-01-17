@@ -3,8 +3,6 @@
 import Logo from "./Logo.astro";
 import Link from "./Link.astro";
 
-import {Icon} from "astro-icon";
-
 //data imports
 import navData from "../data/navData"
 import SideNav from "./SideNav.astro";
@@ -26,7 +24,7 @@ import Socials from "./Socials.astro";
             <button aria-label="menu" id="hamburger" 
             aria-controls="mobileMenu" 
             class="md:hidden lg:hidden sm:relative right-2 top-0">
-            <Icon 
+            <icon 
                 class="inline lg:hidden h-10 w-10 hover:text-brand cursor-pointer" 
                 name="mdi:menu" />
         </button>
@@ -35,7 +33,7 @@ import Socials from "./Socials.astro";
         <div class="flex w-full items-center justify-end rounded-lg">
             <button id="close" 
                 class="absolute sm:relative block top-5 py-2 px-2 cursor-pointer">
-                <Icon 
+                <icon 
                     class="inline lg:hidden h-10 w-10 hover:text-brand cursor-pointer" 
                     name="mdi:close" />
             </button>
@@ -54,7 +52,7 @@ import Socials from "./Socials.astro";
     </div>
 </nav>
 
-<script>import { PollingWatchKind } from "typescript";
+<script>
 
 
     const navLinks = document.querySelectorAll("[data-navLink]");

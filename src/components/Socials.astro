@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon"
+import { Icon } from 'astro-icon/components';
 import socialData from "../data/socialData";
 
 type Props = {
@@ -14,7 +14,7 @@ const {icon_size = 45} = Astro.props
     {
         socialData.map((item) => (
         <a href={item.url} target="_blank">
-            <Icon name={item.icon} size={icon_size} className="cursor-pointer" />
+            <Icon name={item.icon} size={icon_size} class:list="cursor-pointer" />
         </a>
         ))
     }

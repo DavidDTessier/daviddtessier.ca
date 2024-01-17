@@ -2,13 +2,7 @@
 import { Image } from "astro:assets";
 import Main from "../components/Main.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-import CredentialCard from "../components/CredentialCard.astro";
-import CredentialList from "../components/CredentialList.astro";
-import { getCollection } from "astro:content";
 import H1 from "../components/H1.astro";
-
-const credentials = await getCollection("credentials");
 
 ---
 

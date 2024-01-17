@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon/components';
 
 type Props = {
     link: string,
@@ -22,13 +22,13 @@ const { link, icon, label="Contact Me", display_text, target = "_self"} = Astro.
 
         {
             icon && icon.side == "left" && (
-            <Icon name={icon.name} height="24" width="24" />
+            <Icon name={icon.name} size={24} />
             )
         }
         <span>{display_text}</span>
         {
         icon && icon.side == "right" && (
-            <Icon name={icon.name} height="24" width="24" />
+            <Icon name={icon.name} size={24} />
             )
         }
     

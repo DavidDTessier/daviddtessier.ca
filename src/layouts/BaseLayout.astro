@@ -17,25 +17,6 @@ const {
 	image = "images/logo.png" 
 } = Astro.props;
 
-const anim = {
-  old: {
-    name: 'fadeIn',
-    duration: '0.2s',
-    easing: 'linear',
-    fillMode: 'forwards',
-  },
-  new: {
-    name: 'fadeOut',
-    duration: '0.3s',
-    easing: 'linear',
-    fillMode: 'backwards',
-  }
-};
-
-const myFade = {
-  forwards: anim,
-  backwards: anim,
-};
 ---
 
 <!DOCTYPE html>
