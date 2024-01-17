@@ -1,31 +1,30 @@
 const socialData = [
+    
+    {
+        name:"Email",
+        url:"mailto:david@daviddtessier.ca",
+        icon:"mdi:email"
+    },
     {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/david-tessier-66749613/",
-        icon: "fa:linkedin"
-    },
-    {
-        name: "Facebook",
-        url: "https://www.facebook.com/daviddtessier/",
-        icon: "fa-brands:facebook"
-    },
-    {
-        name: "Instagram",
-        url: "https://www.instagram.com/daviddtessier/",
-        icon: "fa-brands:instagram"
+        icon: "mdi:linkedin"
     },
     {
         name: "Github",
         url: "https://github.com/DavidDTessier",
-        icon: "fa-brands:github"
+        icon: "mdi:github"
     },
     {
         name: "Reddit",
         url: "https://www.reddit.com/user/Cl0udS3c_2023",
-        icon: "fa-brands:reddit"
+        icon: "mdi:reddit"
     },
-
-
+    {
+        name:"Youtube",
+        url:"https://www.youtube.com/channel/UCFsTIy1LJdTRRi0w-PKEuwg",
+        icon:"mdi:youtube"
+    }
 ]
 
 export default socialData;
