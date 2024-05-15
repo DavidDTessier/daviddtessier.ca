@@ -16,6 +16,7 @@ const credentialCollection = defineCollection({
     schema: ({image}) => z.object({
         issued_date: z.string(),
         renewed_date: z.string().optional(),
+        expired_date: z.string().optional(),
         badge: image(),
         name: z.string(),
         alt: z.string(),

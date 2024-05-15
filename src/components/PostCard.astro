@@ -11,26 +11,34 @@ const { post } = Astro.props
 ---
 
 <article>
+    <div class="grid grid-cols-1 mb-14">
+             
     <a href={`/blog/${post.slug}`}>
         <Image
             src={post.data.image}
-            width={1600}
+            width={500}
             height={800}
             alt={post.data.title}
             class="rounded-2xl shadow-xl mb-4 object-cover" />
     </a>
+    
     <a href={`/blog/${post.slug}`}
         class="text-xl sm:text-4xl text-zinc-900 font-semibold inline-block"
     >
-    <h2>{post.data.title}</h2>
+    <p class="text-4xl mb-10">
+        {post.data.title}
+      
+    </p>
+    <p class="text-zinc-500 text-lg sm:text-2xl line-clamp-2">
+        {post.data.description} 
+    </p>
     </a>
 
-    <p class="text-zinc-500 text-lg sm:text-2xl line-clamp-2">
-        {post.data.description}
-        
-    </p>
-    <div class="pt-8">
+    <div class="pt-10">
         <LinkButton display_text="Read Post" link={`/blog/${post.slug}`} label="Read Blog Post" />
     </div>
+    
+   </div>
+   
   
 </article>
