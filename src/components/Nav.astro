@@ -2,6 +2,7 @@
 // component imports
 import Logo from "./Logo.astro";
 import Link from "./Link.astro";
+import { Icon } from "astro-icon/components";
 
 //data imports
 import navData from "../data/navData"
@@ -10,10 +11,10 @@ import Socials from "./Socials.astro";
 
 ---
 
-<nav class=" w-full bg-white dark:bg-black shadow-sm" >
-    <div class="flex justify-between align-middle w-full ms-2 me-2 ps-4 pe-4">
+<nav class="w-full bg-white dark:bg-black shadow-sm" >
+    <div class="flex justify-between align-middle w-full">
             <Logo width={300} height={500} />
-            <ul class="hidden sm:md:flex gap-6 text-lg dark:text-white font-semibold text-black m-10">
+            <ul class="hidden sm:md:flex gap-6 text-lg dark:text-white font-semibold text-black m-10 ms-2 me-2 ps-4 pe-4">
                 {
                     navData.map((item) => (
                         <Link href={item.path} text={item.name} classes="navbarLi" isFilled={false} borderVisible={false} data-navLink />
@@ -21,19 +22,19 @@ import Socials from "./Socials.astro";
                     ))
                 }
             </ul>
-            <button aria-label="menu" id="hamburger" 
+     <button aria-label="menu" id="hamburger" 
             aria-controls="mobileMenu" 
-            class="md:hidden lg:hidden sm:relative right-2 top-0">
-            <icon 
-                class="inline lg:hidden h-10 w-10 hover:text-brand cursor-pointer" 
+            class="sm:md:relative right-2 top-0">
+            <Icon  
+                class="lg:hidden inline h-10 w-10 hover:text-brand cursor-pointer" 
                 name="mdi:menu" />
         </button>
     </div>
-    <div id="mobileMenu"  class="fixed left-0 top-0 w-[50%] hidden h-screen bg-[#ecf0f3] p-11 ease-in duration-500">
+    <div id="mobileMenu"  class="fixed left-0 top-0 w-[70%] hidden h-screen bg-[#ecf0f3] p-10 ease-in duration-500">
         <div class="flex w-full items-center justify-end rounded-lg">
             <button id="close" 
                 class="absolute sm:relative block top-5 py-2 px-2 cursor-pointer">
-                <icon 
+                <Icon 
                     class="inline lg:hidden h-10 w-10 hover:text-brand cursor-pointer" 
                     name="mdi:close" />
             </button>

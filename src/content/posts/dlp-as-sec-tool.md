@@ -41,7 +41,9 @@ DLP technologies typically support one or more of the following cybersecurity ac
 
 As I mentioned in my previous article, DLP is an essential tool in your arsenal to protect your organizations sensitive information as well as aid in organizational risk reduction strategy. This is especially true when it comes to protecting and securing endpoint devices such as mobile devices, desktop/laptop computers, and servers.
 
-In the [2023 Data Breach Investigation Report (DBIR)](https://www.verizon.com/business/resources/T178/reports/2023-dbir-executive-summary.pdf) from Verizon recaps the number of global data breaches and cyber attacks in 2023. According to this report there was around 5,119 confirmed data breach reported which is slightly lower than the number of breaches in the previous years report of which was 5,212. Another report from the [Physicians Practice](https://www.physicianspractice.com/view/2023-saw-twice-as-many-patient-data-breaches) indicates that 2023 saw twice as many patient data breaches compared to 2022.
+In the [2023 Data Breach Investigation Report (DBIR)](https://www.verizon.com/business/resources/T178/reports/2023-dbir-executive-summary.pdf) from Verizon _**recaps the number of global data breaches and cyber attacks in 2023. According to this report there was around 5,119 confirmed data breach reported which is slightly lower than the number of breaches in the previous years report of which was 5,212**_. 
+
+Another report from the [Physicians Practice](https://www.physicianspractice.com/view/2023-saw-twice-as-many-patient-data-breaches) _**indicates that 2023 saw twice as many patient data breaches compared to 2022**_.
 
 These numbers increasingly grow year over year which is very alarming especially as we start to see the growing adoption of Gen AI and AI based attacks and why having proper security control in place is so important.
 

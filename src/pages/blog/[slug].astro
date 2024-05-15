@@ -28,6 +28,7 @@ export const getStaticPaths = async () => {
     return paths;
 }
 
+import LinkButton from "../../components/LinkButton.astro";
 
 type Props = {
     post: CollectionEntry<"posts">
@@ -46,10 +47,28 @@ const { Content } = await post.render()
             height={600 / 1.5}
             alt={post.data.title}
             />
+        <br />
+        <LinkButton 
+            label="Blog Page Previous"
+            display_text="Prev"
+            link="/blog"
+            icon={{
+                name:"tabler:arrow-big-left-line",
+                side:"left"
+            }}
+        />
         <hr class="m-5 text-2xl mb-4"/>
         <div class="prose prose-2xl overflow-visible  mb-24">
             <Content />
         </div>
-        
+        <br />
+        <LinkButton 
+            label="Blog Page Previous"
+            display_text="Prev"
+            link="/blog"
+            icon={{
+                name:"tabler:arrow-big-left-line",
+                side:"left"
+            }} />
 	</Main>
 </BaseLayout>
