@@ -24,7 +24,20 @@ const credentialCollection = defineCollection({
     })
 })
 
+const projectCollection = defineCollection({
+    type: 'data',
+    schema: ({image}) => z.object({
+        title: z.string(),
+        short_description: z.string(),
+        published: z.string().optional(),
+        image: image(),
+        blog_post_link: z.string().optional(),
+        github_repo_link: z.string()
+    })
+})
+
 export const collections = {
     posts: postCollection,
-    credentials: credentialCollection
+    credentials: credentialCollection,
+    projects: projectCollection
 }

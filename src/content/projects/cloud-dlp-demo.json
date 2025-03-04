@@ -1,0 +1,8 @@
+{
+    "title": "Cloud DLP Redaction Demo",
+    "short_description": "Demonstrating why Cloud DLP is essential for securing sensitive data in Google Cloud, automating protection through redaction and integration with other GCP services.",
+    "image": "./images/cloud-dlp-demo.png",
+    "published": "11/21/2022",
+    "blog_post_link":"https://engineering.sada.com/cloud-dlp-as-an-essential-security-tool-33aef9a780d4",
+    "github_repo_link": "https://github.com/DavidDTessier/cloud-dlp-redaction-demo"
+}

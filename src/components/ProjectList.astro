@@ -1,0 +1,24 @@
+---
+// data imports
+
+import type { CollectionEntry } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+
+type Props = {
+    projects: CollectionEntry<'projects'>[]
+}
+
+const { projects } = Astro.props
+
+---
+
+<div class="flex flex-wrap">
+
+    <div class="flex flex-wrap">
+
+        {projects.map((prj) => <ProjectCard project={prj} />)}
+        
+        </div>
+    
+    </div>
+
