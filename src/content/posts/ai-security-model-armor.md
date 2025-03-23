@@ -48,7 +48,7 @@ There are several solutions out on the market that leverage this type of framewo
   * [PromptMap](https://github.com/utkusen/promptmap)
   * [LLM Guard](https://protectai.com/llm-guard)
 
-However recently Google Cloud introduces their own managed solution called Model Amor, the remainder of this post will be focused on this new solution.
+However, recently Google Cloud introduces their own managed solution called _Model Armor_, the remainder of this post will be focused on this new solution.
 
 ## Google Cloud - Model Armor Service
 
@@ -56,32 +56,32 @@ However recently Google Cloud introduces their own managed solution called Model
 
 GCP's Model Armor offers the following core features:
 
-* **Universal Model and Cloud Compatibility**:
+* **Universal Model and Cloud Compatibility** :
   * Operates independently of specific AI models or cloud platforms, enabling seamless integration across multi-cloud and multi-model environments.
-* **Centralized Policy Management**:
+* **Centralized Policy Management** :
   * Provides a unified platform for managing and enforcing security and safety policies across all deployed AI models.
-* **API-Driven Integration**:
+* **API-Driven Integration** :
   * Offers a public REST API for direct integration of prompt and response screening into applications, supporting diverse deployment architectures.
 * **Granular Access Control**:
   * Implements Role-Based Access Control (RBAC) to precisely manage user permissions and access levels.
-* **Low-Latency Regional Endpoints**:
+* **Low-Latency Regional Endpoints** :
   * Delivers API access through regional endpoints to minimize latency and optimize performance.
-* **Global Availability**:
+* **Global Availability** :
   * Deployed across multiple regions in the United States and Europe for broad accessibility.
-* **Security Command Center Integration**:
+* **Security Command Center Integration** :
   * Seamlessly integrates with Security Command Center, allowing for centralized visibility, violation detection, and remediation.
-* **Enhanced Safety and Security**:
-  * **_Comprehensive Content Safety Filters_**:
+* **Enhanced Safety and Security** :
+  * **_Comprehensive Content Safety Filters_** :
     * Includes filters for detecting and mitigating harmful content, such as sexually explicit material, dangerous content, harassment, and hate speech.
-  * **_Advanced Threat Detection_**:
+  * **_Advanced Threat Detection_** :
     * Detects and prevents prompt injection and jailbreak attacks, safeguarding AI models from manipulation.
 * **Detects Malicious URLs within prompts and responses**.
-  * **_Integrated Data Loss Prevention (DLP)_**:
+  * **_Integrated Data Loss Prevention (DLP)_** :
     * Leverages Google Cloud's Sensitive Data Protection to discover, classify, and protect sensitive data (e.g., PII, intellectual property), preventing unauthorized disclosure.
-* **PDF Content Screening**:
+* **PDF Content Screening** :
   * Supports the screening of text within PDF documents, for malicious content.
 
-Currently Model Armor is supported as a Global endpoint `modelarmor.googleapis.com` are as regional endpoints in the following supported regions:
+Currently, Model Armor is supported as a Global endpoint `modelarmor.googleapis.com` are as regional endpoints in the following supported regions:
 
 * United States
   * Iowa (us-central1 region): `modelarmor.us-central1.rep.googleapis.com`
@@ -94,9 +94,9 @@ Model Armor can be purchased as standalone services or integrated as part of Sec
 
 ### Configuring GCP's Model Armor
 
-The following image (taken from Google's [Model Armor documentation](https://cloud.google.com/security-command-center/docs/model-armor-overview){:target="_blank"}) describes the standard reference architecture for Model Armor which shows an application using Model Armor to protect an LLM and a user.
+The following image (taken from Google's [Model Armor documentation](https://cloud.google.com/security-command-center/docs/model-armor-overview)) describes the standard reference architecture for Model Armor which shows an application using Model Armor to protect an LLM and a user.
 
-![Mdoel Armor Ref Arch](https://cloud.google.com/static/security-command-center/images/model-armor-architecture.svg)
+![Model Armor Ref Arch](https://cloud.google.com/static/security-command-center/images/model-armor-architecture.svg)
 
 #### IAM Requirements
 
@@ -105,7 +105,7 @@ Access to Model Armor can be controlled using robust IAM Roles, as shown below:
 * `modelarmor.admin` & `modelarmor.floorSettingsAdmin`: Used for Administrators and owners
 * `modelarmor.user`: Used for users and applications planning to screen prompts and and responses
 * `modelarmor.viewer`: Used for template viewers
-* `modelarmor.floorSettingsViewer`: Used for Floor Settings Viewers 
+* `modelarmor.floorSettingsViewer`: Used for Floor Settings Viewers
 
 #### Enabling Model Armor
 
