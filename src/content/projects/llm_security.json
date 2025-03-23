@@ -1,0 +1,8 @@
+{
+    "title": "LLM and Agentic AI Protection using Model Armor",
+    "short_description": "Demonstrating a sample ChatBot that leverages Ollama + Langchain for conversational chat with a Chatbot and allows for options to integrate with Google Cloud's Model Armor for security and responsible AI safeguards and protections.",
+    "image": "./images/gcp-model-armor.png",
+    "published": "03/20/2025",
+    "blog_post_link":"https://daviddtessier.ca/blog/ai-security-model-armor/",
+    "github_repo_link": "https://github.com/DavidDTessier/llm-security/tree/main"
+}
