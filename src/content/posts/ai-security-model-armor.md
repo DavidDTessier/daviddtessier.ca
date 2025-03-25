@@ -1,8 +1,8 @@
 ---
 categories: ["ai", "security"]
-date: 3/22/2025
+date: 3/25/2025
 image: ./images/ai-security-model-armor/protecting-llm-model-armor.png
-title: "Shielding the Sentient: Understanding and Configuring GCP's Model Armor for LLM and Agentic AI Protection"
+title: "The AI Shield: Configuring and leveraging GCP Model Armor for Robust LLM and Agentic AI Security"
 description: A comprehensive look at Google Cloud's Model Armor and how to secure and protect AI workloads
 ---
 
@@ -52,7 +52,7 @@ However, recently Google Cloud introduces their own managed solution called _Mod
 
 ## Google Cloud - Model Armor Service
 
-[Model Armor](https://cloud.google.com/security-command-center/docs/model-armor-overview) which is a fully managed service provided by Google Cloud Platform. It offers capabilities to enhance the safety and security of AI applications. By leveraging the concepts described previously in this post, Model Armor screens LLM prompts and responses for various types of security and safety risks.
+[Model Armor](https://cloud.google.com/security-command-center/docs/model-armor-overview) is a fully managed service provided by Google Cloud Platform which offers capabilities to enhance the safety and security of AI applications. By leveraging the concepts described previously in this post, Model Armor screens LLM prompts and responses for various types of security and safety risks.
 
 GCP's Model Armor offers the following core features:
 
@@ -81,7 +81,7 @@ GCP's Model Armor offers the following core features:
 * **PDF Content Screening** :
   * Supports the screening of text within PDF documents, for malicious content.
 
-Currently, Model Armor is supported as a Global endpoint `modelarmor.googleapis.com` are as regional endpoints in the following supported regions:
+Currently, Model Armor is supported as a Global endpoint `modelarmor.googleapis.com` or as regional endpoints in the following supported regions:
 
 * United States
   * Iowa (us-central1 region): `modelarmor.us-central1.rep.googleapis.com`
@@ -115,7 +115,7 @@ Model Armor can be configured either using the GCP Console or through the use of
 gcloud config set api_endpoint_overrides/modelarmor "https://modelarmor.LOCATION.rep.googleapis.com/"
 ```
 
-Replace the `LOCATION` in the above command to specify the region (of the supported regions) where you would like to leverage Model Armor, otherwise the default global api is used `modelarmor.googleapis.com`.
+Replace the `LOCATION` in the above command to specify the region (of the supported regions) where you would like to leverage Model Armor, otherwise the default global endpoint is used `modelarmor.googleapis.com`.
 
 Finally, use the following command to enable API:
 
@@ -146,7 +146,7 @@ The following example JSON show confidence levels for all supported filters:
 ]
 ```
 
-The following `gcloud` command will generate a template in Model Amor, in also include custom error codes and messages that will be returned if any of the security and safety filters return a match:
+The following `gcloud` command will generate a template in Model Armor, in also include custom error codes and messages that will be returned if any of the security and safety filters return a match:
 
 ```bash
 # create the model armor template
@@ -165,9 +165,10 @@ gcloud model-armor templates create demo-mdl-armor --location us-central1 \
 
 #### Model Armor Integration
 
-Once the _Model Armor_ template is created and ready to use, now you have a two options to choose from when it comes to validations and/or sanitization which are described in detail below.
+Once the _Model Armor_ template is created and ready to use, now you have two options to choose from when it comes to validations and/or sanitization which are described in detail below.
 
-**User Prompt Inspection/Sanitization**
+##### User Prompt Inspection/Sanitization
+
 This sanitization process leverages the _Model Armor_ service to validate and sanitize the user's prompt that is being sent to the LLM. The sanitization process inspects the content of the user prompt against the configured safety and protect filters of _Model Armor_. The following python code demonstrates how to integrate model armor:
 
 ```python
@@ -200,7 +201,8 @@ The following error message is return from the response IF a match is discovered
 "Unfortunately I cannot process that question, please refine your request and avoid any explicit content."
 ```
 
-**LLM Model Response Inspection/Sanitization**
+##### LLM Model Response Inspection/Sanitization
+
 Similar to the inspection of the user prompt prior to LLM submission, you can inspect and sanitize the response that is returned from the LLM, this is done as shown in the following python code:
 
 ```python
@@ -234,7 +236,8 @@ The following error message is return from the response IF a match is discovered
 "The content returned from the LLM has been reviewed for harmful or explicit content. Unfortunate we cannot display this content."
 ```
 
-**Sample output**
+##### Sample Sanitization Output
+
 The following is a sample output from the _Model Armor_ Sanitization processes, the output format is used for both _Prompt Inspection_ and _LLM Response Inspection_.
 
 Sample response output:
@@ -319,6 +322,86 @@ sanitization_metadata {
 }
 invocation_result: SUCCESS
 ```
+
+#### Floor Settings
+
+_Floor settings_ in _Model Armor_ are a mechanism for Security Architects and CISO's to control the minimum requirements and security posture for all Model Armor templates within a Google Cloud resource hierarchy (that is, at an organization, folder, or project level). They define rules that dictate minimum requirements for all Model Armor templates created at a specific point in the Google Cloud resource hierarchy (that is, at an organization, folder, or project level).  Using floor settings prevents individual developers from accidentally or intentionally lowering security standards below acceptable levels.
+
+In cases of conflicting floor settings, the setting defined at the lower level of the resource hierarchy is applied. For instance, a project-level setting overrides a folder-level setting.
+
+To illustrate Model Armor floor settings using a real example:
+
+1) A folder has policy X enabled, which activates malicious URL filtering.
+2) A project inside that folder has policy Y, requiring prompt injection and jailbreak detection with medium confidence.
+3) Any Model Armor template created within the project will enforce policy Y.
+4) Templates outside that project's parent folder will not enforce policy X.
+
+If Security Command Center Premium tier or Enterprise tier is used, floor setting violations trigger security findings. To ensure compliance with newly established floor settings, Security Command Center will highlight any pre-existing templates with less stringent security settings, prompting you to take corrective action.
+
+##### Enabling and Configuring Model Armor Floor Settings
+
+To enable and update floor settings run the following gcloud command:
+
+```bash
+     gcloud model-armor floorsettings update \
+       --malicious-uri-filter-settings-enforcement=ENABLED \
+       --pi-and-jailbreak-filter-settings-enforcement=DISABLED \
+       --pi-and-jailbreak-filter-settings-confidence-level=LOW_AND_ABOVE \
+       --basic-config-filter-enforcement=ENABLED \
+       --add-rai-settings-filters='[{"confidenceLevel": "low_and_above", "filterType": "HARASSMENT"}, {"confidenceLevel": "high", "filterType": "SEXUALLY_EXPLICIT"}]'
+       --full-uri='folders/FOLDER_ID/locations/global/floorSetting' \
+       --enable-floor-setting-enforcement=true
+```
+
+`--full-uri` can be either project, folder, or organization level, as shown below:
+
+* _Project_: `projects/PROJECT_ID/locations/global/floorSetting`
+* _Folder_: `folders/FOLDER_ID/locations/global/floorSetting`
+* _Organization_:`organizations/ORG_ID/locations/global/floorSetting`
+
+**Example Violation**
+Model Armor detects high-severity security violations when templates don't meet minimum resource hierarchy _floor settings_. This occurs when templates lack required filters or fail to meet minimum confidence levels, triggering alerts/findings in Security Command Center. The following example outlines the `source_properties` field of the finding within floor settings violation.
+
+```json
+{
+  "filterConfig": {
+    "raiSettings": {
+      "raiFilters": [
+        {
+          "filterType": "HATE_SPEECH",
+          "confidenceLevel": {
+            "floorSettings": "LOW_AND_ABOVE",
+            "template": "MEDIUM_AND_ABOVE"
+          }
+        },
+        {
+          "filterType": "HARASSMENT",
+          "confidenceLevel": {
+            "floorSettings": "MEDIUM_AND_ABOVE",
+            "template": "HIGH"
+          }
+        }
+      ]
+    },
+    "piAndJailbreakFilterSettings": {
+      "confidenceLevel": {
+        "floorSettings": "LOW_AND_ABOVE",
+        "template": "HIGH"
+      }
+    },
+    "maliciousUriFilterSettings": {
+      "floorSettings": "ENABLED",
+      "template": "DISABLED"
+    }
+  }
+}
+```
+
+#### Logging and Auditing
+
+_Model Armor_ is an auditable resource in GCP and therefore all action are logged to Cloud Logging and the entries can be filtered using the following service: `protoPayload.serviceName="modelarmor.googleapis.com"`. 
+
+For more details see the official GCP [documentation](https://cloud.google.com/security-command-center/docs/audit-logging-model-armor).
 
 ### Live Demo
 
