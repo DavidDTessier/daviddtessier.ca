@@ -522,10 +522,10 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify-json/noto-v1@^1.1.11":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@iconify-json/noto-v1/-/noto-v1-1.2.1.tgz#61bd350508549bc281f728c009fccb0d3c578a67"
-  integrity sha512-sq1DyXEv1Qk2whPsZxsygB1cdDh5OlonSOk0mdmOyVXqLPwTINyep2NPLDR0iKCkrA3vKEPIU34Eso6+tquBWw==
+"@iconify-json/noto-v1@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@iconify-json/noto-v1/-/noto-v1-1.2.2.tgz#354683692503586d39f199ddb8096bd77cc4ff1a"
+  integrity sha512-DJ2GjmrPtztncsNbgPaYBRW8e3Y6TFxIdEp6XmtvpcTc11EcwVXikeNazCV26zCHFtO/UkyBaGHn9IxEA2ihtA==
   dependencies:
     "@iconify/types" "*"
 
